@@ -2,6 +2,8 @@
 
 现在也提供可安装的 Python 包 `genomet2t`（Python 3.11+），统一管理配置、步骤选择、Docker 调用和运行日志。Python 包会携带现有 Shell 分析脚本，组装和注释仍由镜像中的生信软件执行。
 
+> **Docker 镜像获取：** 使用 Docker 运行本流程需要相应的生信镜像。需要 Docker 镜像，请联系 [1394248709@qq.com](mailto:1394248709@qq.com)。镜像文件单独提供，未包含在 GitHub 仓库或 Python 安装包中。
+
 ## Codex 技能：GenomeT2T 组装助手
 
 仓库的 [`skills/genome-t2t/`](skills/genome-t2t/) 提供配套技能，包含 [SKILL.md](skills/genome-t2t/SKILL.md)、配置和流程参考、启动器以及 `genomet2t 0.1.0` wheel。保持该目录完整，复制到本机的 `~/.codex/skills/genome-t2t/`（Windows 对应用户目录下的 `.codex/skills/genome-t2t/`）后，即可作为本地技能使用。
@@ -96,6 +98,16 @@ TOML 是 Python 命令的配置格式。下文的 `config.sh` 和 `00.docker.sh`
 
 ## Docker 使用
 
+组装镜像及注释镜像可通过上述邮箱联系获取。取得离线镜像压缩包后，在运行 Docker 的宿主机导入；注释流程还需要导入对应的注释镜像：
+
+```bash
+# 替换为实际镜像文件路径
+docker load --input "/path/to/genome-t2t-v1.0.tar.gz"
+docker image ls
+```
+
+以导入结果显示的实际镜像名和标签设置 TOML 的 `[docker].assembly_image`、`[docker].annotation_image`。直接使用下方 Shell 入口时，可通过环境变量 `ASSEMBLY_IMAGE`、`ANNOTATION_IMAGE` 覆盖镜像标签；压缩包文件名不一定等于镜像标签。
+
 在安装并运行 Docker 的 Linux 宿主机上，进入本仓库目录。先为组装结果、输入数据和数据库准备宿主机目录：
 
 ```bash
@@ -105,7 +117,7 @@ export HOST_DATADIR="$HOME/T2T/data"
 export HOST_DATABASE="$HOME/T2T/database"
 ```
 
-查看 `00.docker.sh` 的用法并下载镜像：
+查看 `00.docker.sh` 的用法；使用可访问的镜像仓库时，也可以通过 `pull` 下载镜像：
 
 ```bash
 bash 00.docker.sh
