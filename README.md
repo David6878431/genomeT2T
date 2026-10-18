@@ -2,6 +2,25 @@
 
 现在也提供可安装的 Python 包 `genomet2t`（Python 3.11+），统一管理配置、步骤选择、Docker 调用和运行日志。Python 包会携带现有 Shell 分析脚本，组装和注释仍由镜像中的生信软件执行。
 
+## Codex 技能：GenomeT2T 组装助手
+
+仓库的 [`skills/genome-t2t/`](skills/genome-t2t/) 提供配套技能，包含 [SKILL.md](skills/genome-t2t/SKILL.md)、配置和流程参考、启动器以及 `genomet2t 0.1.0` wheel。保持该目录完整，复制到本机的 `~/.codex/skills/genome-t2t/`（Windows 对应用户目录下的 `.codex/skills/genome-t2t/`）后，即可作为本地技能使用。
+
+调用示例：
+
+```text
+$genome-t2t 帮我检查 HiFi 组装配置，并预览 Docker 运行命令。
+```
+
+也可直接验证仓库内的技能入口，需 Python 3.11+：
+
+```bash
+python skills/genome-t2t/scripts/launch.py --version
+python skills/genome-t2t/scripts/launch.py stages
+```
+
+启动器使用随附 wheel，不需要先全局安装 Python 包；真实分析仍需 Docker 或已配好的 Linux 生信软件环境。技能会区分组装分支和必需参数，并保留 Hi-C 人工校正环节。
+
 ## Python 包安装与运行
 
 在本仓库目录安装，或从提供的 wheel 文件安装：

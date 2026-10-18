@@ -1,0 +1,4 @@
+interface:
+  display_name: "GenomeT2T 组装助手"
+  short_description: "配置和运行 genomeT2T 的 Docker 基因组组装、评估与注释流程"
+  default_prompt: "使用 $genome-t2t，根据我的测序数据检查配置并运行所需的基因组组装步骤。"
