@@ -1,0 +1,35 @@
+# 项目配置和测序/分析产物不上传
+config.sh
+config.local.sh
+config.*.local.sh
+data/
+database/
+myt2t/
+results/
+logs/
+*.fastq
+*.fastq.gz
+*.fq
+*.fq.gz
+*.bam
+*.bai
+*.sam
+*.cram
+*.sra
+*.meryl/
+*.log
+*.sqlite
+*.sqlite-*
+.DS_Store
+Thumbs.db
+# Python packaging, local TOML configuration and execution reports
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+genomeT2T.toml
+genomeT2T.*.toml
+!genomeT2T.example.toml
+.genomet2t/
